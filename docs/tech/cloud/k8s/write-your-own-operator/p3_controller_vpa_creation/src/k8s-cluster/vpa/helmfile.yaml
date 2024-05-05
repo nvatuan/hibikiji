@@ -1,0 +1,11 @@
+repositories:
+- name: cowboysysop
+  url: https://cowboysysop.github.io/charts/
+
+releases:
+- name: vertical-pod-autoscaler
+  namespace: vertical-pod-autoscaler
+  chart: cowboysysop/vertical-pod-autoscaler
+  version: 9.6.0  # Newest version on https://artifacthub.io/packages/helm/cowboysysop/vertical-pod-autoscaler
+  values:
+  - values.yaml

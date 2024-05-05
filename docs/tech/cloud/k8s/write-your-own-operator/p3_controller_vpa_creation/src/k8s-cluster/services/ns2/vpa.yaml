@@ -1,0 +1,21 @@
+apiVersion: autoscaling.k8s.io/v1
+kind: VerticalPodAutoscaler
+metadata:
+  name: ns2-vpa
+  namespace: ns2
+spec:
+  targetRef:
+    apiVersion: "apps/v1"
+    kind: Deployment
+    name: ns2-depl
+  updatePolicy:
+    updateMode: "Auto"
+  # resourcePolicy:
+  #   containerPolicies:
+  #   - containerName: hello1
+  #     minAllowed:
+  #       cpu: 10m
+  #       memory: 69Mi
+  #     maxAllowed:
+  #       cpu: 1
+  #       memory: 1Gi

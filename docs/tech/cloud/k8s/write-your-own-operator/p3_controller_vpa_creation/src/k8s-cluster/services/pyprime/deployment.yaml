@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pyprime-depl
+  namespace: ns-pyprime
+spec:
+  selector:
+    matchLabels:
+      app: pyprime-depl
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: pyprime-depl
+    spec:
+      containers:
+        - name: pyprime
+          image: python:3.9
+          resources:
+            requests:
+              cpu: 200m
+              memory: 200Mi
+            limits:
+              memory: 500Mi
+          command:
+            - python
+            - -c
+            - |
+              for i in range(2, 1000000000000):
+                is_prime = True
+                for d in range(2, i):
+                  if d*d > i: break
+                  if i % d == 0:
+                    is_prime = False
+                    break
+                if is_prime:
+                  print(i)
+---

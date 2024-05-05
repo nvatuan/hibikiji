@@ -1,0 +1,27 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ns1-depl
+  namespace: ns1 
+spec:
+  selector:
+    matchLabels:
+      app: ns1-depl
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: ns1-depl1
+    spec:
+      containers:
+        - name: hello1
+          image: ubuntu:20.04
+          resources:
+            requests:
+              cpu: 100m
+              memory: 200Mi
+          command:
+            - bash
+            - -c
+            - while true; do timeout 0.5s yes >/dev/null; sleep 0.5s; echo 'Hello world Namespace 1'; done
