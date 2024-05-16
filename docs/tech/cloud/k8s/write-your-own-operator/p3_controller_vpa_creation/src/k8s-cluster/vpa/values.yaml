@@ -1,0 +1,23 @@
+admissionController:
+  resources:
+    requests:
+      cpu: 50m
+      memory: 128Mi
+
+recommender:
+  resources:
+    requests:
+      cpu: 50m
+      memory: 128Mi
+
+updater:
+  resources:
+    requests:
+      cpu: 50m
+      memory: 128Mi
+
+crds:
+  resources:
+    requests:
+      cpu: 50m
+      memory: 128Mi
