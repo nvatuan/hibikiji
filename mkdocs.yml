@@ -1,4 +1,98 @@
 site_name: Hibikiji
+site_description: An all-in-one hub for coding, travel, cooking, and hobbies — by an anime-loving software engineer.
 site_url: https://mydomain.org/mysite
+
 theme:
   name: material
+  custom_dir: overrides
+  language: en
+  favicon: assets/favicon.png
+  logo: assets/favicon.png
+  icon:
+    repo: fontawesome/brands/github
+  font:
+    text: Inter
+    code: JetBrains Mono
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.top
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.indexes
+    - navigation.footer
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.code.annotate
+    - toc.follow
+
+extra_css:
+  - stylesheets/extra.css
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - footnotes
+  - toc:
+      permalink: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+plugins:
+  - search
+  - blog:
+      blog_dir: blog
+      blog_toc: true
+      post_url_format: "{slug}"
+      post_excerpt: optional
+      archive: true
+      archive_name: Archive
+      categories: true
+      categories_name: Categories
+      categories_allowed:
+        - Platform Engineering
+        - Software Development
+        - Hobby Projects
+        - Travel
+        - General
+  - tags
+
+nav:
+  - Home: index.md
+  - Blog:
+      - blog/index.md
+  - Tech:
+      - Kubernetes: tech/cloud/k8s/index.md
+  - About: personal/this_is_my_personal_blog.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/
+      name: GitHub
+  generator: false

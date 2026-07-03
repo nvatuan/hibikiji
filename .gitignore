@@ -1,1 +1,17 @@
+# MkDocs build output
+site/
+.cache/
+
+# Python
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+
+# Node
+node_modules/
+
+# OS / editor
+.DS_Store
 **/.DS_Store
+Thumbs.db

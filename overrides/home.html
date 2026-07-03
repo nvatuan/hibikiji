@@ -1,0 +1,72 @@
+{% extends "main.html" %}
+
+{% block content %}
+<div class="board">
+
+  <!-- ---------- Case header (pinned) ---------- -->
+  <header class="case">
+    <div class="case__polaroid">
+      <img src="{{ base_url }}/assets/favicon.png" alt="Hibikiji">
+      <span class="case__cap">ひびき</span>
+    </div>
+    <div class="case__body">
+      <span class="case__kicker">こんにちは、</span>
+      <h1 class="case__title">I build things<br>&amp; write about all of it.</h1>
+      <p class="case__sub">
+        Platform engineer by day, weeb by night. Pinned to this board: my code,
+        travels, cooking experiments, and whatever hobby has hijacked my brain
+        this month.
+      </p>
+      <a class="case__link" href="{{ base_url }}/blog/">flip through the case file →</a>
+    </div>
+    <span class="stamp">case&nbsp;#001<br><small>personal archive</small></span>
+  </header>
+
+  <!-- ---------- Board label ---------- -->
+  <div class="board__label">topics on the board</div>
+
+  <!-- ---------- Pinned notes ---------- -->
+  <div class="notes">
+
+    <a class="note note--platform" href="{{ base_url }}/blog/category/platform-engineering/">
+      <span class="note__no">01</span>
+      <h2 class="note__name">Platform Engineering</h2>
+      <p class="note__desc">Infra, Kubernetes, CI/CD, and the plumbing that keeps systems humming.</p>
+      <span class="note__more">open the file →</span>
+    </a>
+
+    <a class="note note--software" href="{{ base_url }}/blog/category/software-development/">
+      <span class="note__no">02</span>
+      <h2 class="note__name">Software Development</h2>
+      <p class="note__desc">Code, architecture notes, patterns, and lessons learned shipping things.</p>
+      <span class="note__more">open the file →</span>
+    </a>
+
+    <a class="note note--hobby" href="{{ base_url }}/blog/category/hobby-projects/">
+      <span class="note__no">03</span>
+      <h2 class="note__name">Hobby Projects</h2>
+      <p class="note__desc">Side quests, tinkering, cooking experiments, and for-fun builds.</p>
+      <span class="note__more">open the file →</span>
+    </a>
+
+    <a class="note note--travel" href="{{ base_url }}/blog/category/travel/">
+      <span class="note__no">04</span>
+      <h2 class="note__name">Travel</h2>
+      <p class="note__desc">Places I've wandered through and things I want to remember later.</p>
+      <span class="note__more">open the file →</span>
+    </a>
+
+    <a class="note note--general" href="{{ base_url }}/blog/category/general/">
+      <span class="note__no">05</span>
+      <h2 class="note__name">General</h2>
+      <p class="note__desc">Thoughts, notes-to-self, and everything that doesn't fit a box.</p>
+      <span class="note__more">open the file →</span>
+    </a>
+
+  </div>
+
+  <!-- ---------- Sticky footer note ---------- -->
+  <div class="board__foot">pinned together with mkdocs-material · ☀ / 🌙 aware</div>
+
+</div>
+{% endblock %}
