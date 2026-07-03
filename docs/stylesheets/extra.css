@@ -202,15 +202,22 @@
   display: flex;
   flex-direction: column;
   padding: 0;
-  min-height: unset;
+  min-height: unset !important;
   max-height: unset;
-  background: #0a0a14;
-  background-image: none;
+  background: #0a0a14 !important;
+  background-image: none !important;
   overflow: hidden;
+  box-shadow: none !important;
+  outline: none;
+  border-radius: 4px;
 }
 .note--identity:nth-child(1) {
   transform: rotate(-1.2deg);
   margin-top: 0;
+}
+.note--identity::before,
+.note--identity::after {
+  display: none;
 }
 .note--identity:hover {
   transform: rotate(0deg) translateY(-6px) scale(1.02);
