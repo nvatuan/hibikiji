@@ -3,30 +3,23 @@
 {% block content %}
 <div class="board">
 
-  <!-- ---------- Case header (pinned) ---------- -->
-  <header class="case">
-    <div class="case__polaroid">
-      <img src="{{ base_url }}/assets/favicon.png" alt="Hibikiji">
-      <span class="case__cap">ひびき</span>
-    </div>
-    <div class="case__body">
-      <span class="case__kicker">こんにちは、</span>
-      <h1 class="case__title">I build things<br>&amp; write about all of it.</h1>
-      <p class="case__sub">
-        Platform engineer by day, weeb by night. Pinned to this board: my code,
-        travels, cooking experiments, and whatever hobby has hijacked my brain
-        this month.
-      </p>
-      <a class="case__link" href="{{ base_url }}/blog/">flip through the case file →</a>
-    </div>
-    <span class="stamp">case&nbsp;#001<br><small>personal archive</small></span>
-  </header>
-
   <!-- ---------- Board label ---------- -->
   <div class="board__label">topics on the board</div>
 
   <!-- ---------- Pinned notes ---------- -->
   <div class="notes">
+
+    <!-- Identity note — hibikiji.png -->
+    <a class="note note--identity" href="{{ base_url }}/blog/">
+      <img class="note__img" src="{{ base_url }}/assets/hibikiji.png" alt="Hibikiji">
+      <div class="note__overlay">
+        <span class="note__kicker">日々記事</span>
+        <h1 class="note__title">Hibikiji</h1>
+        <p class="note__tagline">Sometimes I write to leave my marks on this never-ending expanding cyberspace.</p>
+        <span class="note__cta">browse →</span>
+      </div>
+      <span class="stamp">case&nbsp;#001<br><small>personal archive</small></span>
+    </a>
 
     <a class="note note--platform" href="{{ base_url }}/blog/category/platform-engineering/">
       <span class="note__no">01</span>
