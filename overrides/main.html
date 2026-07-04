@@ -5,3 +5,46 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
 {% endblock %}
+
+{% block tabs %}
+<nav class="md-tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list" role="list">
+      <li class="md-tabs__item">
+        <a href="{{ base_url }}/" class="md-tabs__link">Home</a>
+      </li>
+      <li class="md-tabs__item">
+        <a href="{{ base_url }}/blog/category/cloud/" class="md-tabs__link">☁ Clouds</a>
+      </li>
+      <li class="md-tabs__item">
+        <a href="{{ base_url }}/blog/category/softdev/" class="md-tabs__link">&lt;/&gt; SoftEngr</a>
+      </li>
+      <li class="md-tabs__item">
+        <a href="{{ base_url }}/blog/category/hobby/" class="md-tabs__link">✿ Hobby</a>
+      </li>
+      <li class="md-tabs__item">
+        <a href="{{ base_url }}/blog/category/travel/" class="md-tabs__link">✈ Travel</a>
+      </li>
+      <li class="md-tabs__item">
+        <a href="{{ base_url }}/blog/category/general/" class="md-tabs__link">◦ Misc.</a>
+      </li>
+      <li class="md-tabs__item">
+        <a href="{{ base_url }}/personal/this_is_my_personal_blog/" class="md-tabs__link">Personal</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<script>
+  (function () {
+    var path = window.location.pathname;
+    document.querySelectorAll(".md-tabs__link").forEach(function (a) {
+      var href = a.getAttribute("href");
+      if (href && href !== "/" && path.indexOf(href.replace(/^.*\/\/[^/]+/, "")) === 0) {
+        a.classList.add("md-tabs__link--active");
+      } else if ((path === "/" || path.endsWith("/index.html")) && a.getAttribute("href").match(/\/$/)) {
+        a.classList.add("md-tabs__link--active");
+      }
+    });
+  })();
+</script>
+{% endblock %}

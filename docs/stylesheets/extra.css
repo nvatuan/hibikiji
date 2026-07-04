@@ -224,9 +224,9 @@
   bottom: 1rem;
   right: 1rem;
   max-width: 40%;
-  background: rgba(8, 6, 20, 0.82);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  background: rgba(8, 6, 20, 0.70);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
   border-radius: 6px;
   padding: 0.9rem 1.1rem 0.8rem;
   border: 1px solid rgba(255,255,255,0.08);
@@ -251,17 +251,18 @@
 }
 .masthead__tagline {
   color: rgba(255,255,255,0.7);
-  font-size: 0.78rem;
-  line-height: 1.4;
+  font-size: 0.7rem;
+  line-height: 1.0;
+  font-style: italic;
   margin: 0 0 0.55rem;
 }
 .masthead__cta {
   font-family: var(--h-hand);
-  font-size: 1.1rem;
+  font-size: 1.0rem;
   color: var(--h-sakura);
   border-bottom: 2px dashed rgba(255, 111, 165, 0.4);
-  display: inline-block;
   transition: color 0.15s;
+  float: right;
 }
 .masthead:hover .masthead__cta {
   color: #fff;

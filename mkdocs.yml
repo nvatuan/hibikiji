@@ -6,8 +6,8 @@ theme:
   name: material
   custom_dir: overrides
   language: en
-  favicon: assets/favicon.png
-  logo: assets/favicon.png
+  favicon: assets/favicon.jpg
+  logo: assets/favicon.jpg
   icon:
     repo: fontawesome/brands/github
   font:
@@ -29,8 +29,6 @@ theme:
         icon: material/weather-sunny
         name: Switch to light mode
   features:
-    - navigation.tabs
-    - navigation.tabs.sticky
     - navigation.sections
     - navigation.top
     - navigation.instant
@@ -75,11 +73,12 @@ plugins:
       categories: true
       categories_name: Categories
       categories_allowed:
-        - Platform Engineering
-        - Software Development
-        - Hobby Projects
-        - Travel
         - General
+        - Cloud
+        - SoftDev
+        - Hobby
+        - Travel
+        - Misc
   - tags
 
 nav:
@@ -88,11 +87,14 @@ nav:
       - blog/index.md
   - Tech:
       - Kubernetes: tech/cloud/k8s/index.md
-  - About: personal/this_is_my_personal_blog.md
+  - Personal: personal/personal_blog.md
 
-extra:
-  social:
-    - icon: fontawesome/brands/github
-      link: https://github.com/
-      name: GitHub
-  generator: false
+watch:
+  - overrides
+
+# extra:
+#   social:
+#     - icon: fontawesome/brands/github
+#       link: https://github.com/
+#       name: GitHub
+#   generator: false

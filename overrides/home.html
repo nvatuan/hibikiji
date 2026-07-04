@@ -7,60 +7,65 @@
   <a class="masthead" href="{{ base_url }}/blog/">
     <img class="masthead__img" src="{{ base_url }}/assets/hibikiji.png" alt="Hibikiji">
     <div class="masthead__text">
-      <span class="masthead__kicker">日々記事</span>
-      <h1 class="masthead__title">Hibikiji</h1>
-      <p class="masthead__tagline">Sometimes I write to leave my marks on this never-ending expanding cyberspace.</p>
+      <span class="masthead__kicker">日々記事 - Hibikiji</span>
+      <h1 class="masthead__title"></h1>
+      <p class="masthead__tagline">
+        sometimes I write to leave my marks on this wretched, never-ending expanding cyberspace.
+      </p>
       <span class="masthead__cta">browse →</span>
     </div>
   </a>
 
   <!-- ---------- Board label ---------- -->
-  <div class="board__label">topics on the board</div>
+  <div class="board__label">trying to categorize this mess</div>
 
   <!-- ---------- Pinned notes ---------- -->
   <div class="notes">
 
     <!-- Identity note — hibikiji.png -->
 
-    <a class="note note--platform" href="{{ base_url }}/blog/category/platform-engineering/">
+    <a class="note note--platform" href="{{ base_url }}/blog/category/cloud/">
       <span class="note__no">01</span>
-      <h2 class="note__name">Platform Engineering</h2>
-      <p class="note__desc">Infra, Kubernetes, CI/CD, and the plumbing that keeps systems humming.</p>
+      <h2 class="note__name">The big bad Clouds</h2>
+      <p class="note__desc">Infrastructure, Kubernetes, CI/CD, Cloud providers,... mostly serious stuffs distilled from work.</p>
       <span class="note__more">open the file →</span>
     </a>
 
-    <a class="note note--software" href="{{ base_url }}/blog/category/software-development/">
+    <a class="note note--software" href="{{ base_url }}/blog/category/softdev/">
       <span class="note__no">02</span>
-      <h2 class="note__name">Software Development</h2>
-      <p class="note__desc">Code, architecture notes, patterns, and lessons learned shipping things.</p>
+      <h2 class="note__name">SoftEngineer</h2>
+      <p class="note__desc">Code, architecture notes, patterns, and lessons learned shipping things. Again, mostly serious stuffs.</p>
       <span class="note__more">open the file →</span>
     </a>
 
-    <a class="note note--hobby" href="{{ base_url }}/blog/category/hobby-projects/">
+    <a class="note note--hobby" href="{{ base_url }}/blog/category/hobby/">
       <span class="note__no">03</span>
       <h2 class="note__name">Hobby Projects</h2>
-      <p class="note__desc">Side quests, tinkering, cooking experiments, and for-fun builds.</p>
+      <p class="note__desc">adhd short-lived projects that definitely won't last</p>
       <span class="note__more">open the file →</span>
     </a>
 
     <a class="note note--travel" href="{{ base_url }}/blog/category/travel/">
       <span class="note__no">04</span>
       <h2 class="note__name">Travel</h2>
-      <p class="note__desc">Places I've wandered through and things I want to remember later.</p>
+      <p class="note__desc">I always want to travel more... feels like actually living when I do.</p>
       <span class="note__more">open the file →</span>
     </a>
 
     <a class="note note--general" href="{{ base_url }}/blog/category/general/">
       <span class="note__no">05</span>
-      <h2 class="note__name">General</h2>
-      <p class="note__desc">Thoughts, notes-to-self, and everything that doesn't fit a box.</p>
+      <h2 class="note__name">Misc.</h2>
+      <p class="note__desc">Anything dont fit, fit here. like when i was getting tired of house cleaning.</p>
       <span class="note__more">open the file →</span>
     </a>
 
   </div>
 
   <!-- ---------- Sticky footer note ---------- -->
-  <div class="board__foot">pinned together with mkdocs-material · ☀ / 🌙 aware</div>
+  <div class="board__foot">
+    mkdocs-material.
+    before you form any opinion, remember that code were mostly written by Claude.
+  </div>
 
 </div>
 {% endblock %}
