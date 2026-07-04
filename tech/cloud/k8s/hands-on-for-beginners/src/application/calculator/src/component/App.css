@@ -1,0 +1,28 @@
+.component-app-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 100%;
+}
+
+.component-app-wrapper > .component-app {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  padding: 1em;
+  max-height: 600px;
+}
+
+.component-app-wrapper > .component-app > .history {
+  background-color: rgb(212, 255, 234);
+  font-size: xx-large;
+  overflow-y: auto;
+}
+
+th, td{
+  border: 1px solid black;
+  padding: 0 14px;
+  font-size: xx-large;
+  font-family: monospace;
+  text-align: center;
+}

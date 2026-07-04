@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: redicheck
+  namespace: my-app
+  labels:
+    app.kubernetes.io/name: redicheck
+spec:
+  containers:
+    - name: redicheck
+      image: nvat/redicheck:v0.1
+      imagePullPolicy: Always
+      ports:
+        - containerPort: 5071
+      env:
+        - name: REDISHOST
+          value: "redis-service"
+        - name: REDISPORT
+          value: "6379"
+        - name: HOST
+          value: "0.0.0.0"
+        - name: PORT
+          value: "5071"
+      resources:
+        limits:
+          cpu: "500m"
+          memory: "512Mi"

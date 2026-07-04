@@ -1,0 +1,544 @@
+/* ============================================================
+   Hibikiji — "The Evidence Board"
+   Cute-futuristic dev theme. Iris + Sakura + Mint.
+   Home page = a corkboard of pinned paper notes.
+   ============================================================ */
+
+/* ---------- Design tokens: LIGHT ("Daybreak") ---------- */
+[data-md-color-scheme="default"] {
+  --h-bg: #fafafc;
+  --h-surface: #ffffff;
+  --h-glass: rgba(255, 255, 255, 0.72);
+  --h-text: #1b1c2e;
+  --h-muted: #6b6c86;
+  --h-border: #e7e7f1;
+
+  --h-iris: #6c6cff;
+  --h-iris-soft: #eeeeff;
+  --h-sakura: #ff6fa5;
+  --h-sakura-soft: #ffe6ef;
+  --h-mint: #17b998;
+  --h-mint-soft: #dcfaf1;
+  --h-cyan: #1e9fd6;
+  --h-cyan-soft: #ddf3fb;
+  --h-lav: #9b7bff;
+  --h-lav-soft: #efeaff;
+
+  /* corkboard */
+  --board-bg: #c9a878;
+  --board-bg2: #bd9866;
+  --board-frame: #6f4a2f;
+  --board-vignette: rgba(60, 38, 18, 0.35);
+  --note-bg: #fffdf6;
+  --note-text: #2c2822;
+  --note-muted: #7a7166;
+  --note-line: rgba(0, 0, 0, 0.06);
+  --tape: rgba(255, 233, 140, 0.55);
+  --note-shadow: 0 12px 22px rgba(50, 30, 10, 0.28);
+
+  /* Material overrides */
+  --md-primary-fg-color: #6c6cff;
+  --md-primary-fg-color--light: #8b8bff;
+  --md-primary-fg-color--dark: #5252e0;
+  --md-primary-bg-color: #ffffff;
+  --md-accent-fg-color: #ff6fa5;
+  --md-default-bg-color: #fafafc;
+  --md-default-fg-color: #1b1c2e;
+  --md-typeset-a-color: #5252e0;
+  --md-typeset-color: #1b1c2e;
+}
+
+/* ---------- Design tokens: DARK ("Midnight Sakura") ---------- */
+[data-md-color-scheme="slate"] {
+  --md-hue: 240;
+  --h-bg: #0e0f1c;
+  --h-surface: #16182b;
+  --h-glass: rgba(24, 26, 45, 0.55);
+  --h-text: #e7e8f5;
+  --h-muted: #9a9cbe;
+  --h-border: rgba(139, 139, 255, 0.18);
+
+  --h-iris: #8b8bff;
+  --h-iris-soft: rgba(139, 139, 255, 0.14);
+  --h-sakura: #ff9ec4;
+  --h-sakura-soft: rgba(255, 158, 196, 0.14);
+  --h-mint: #56e7c6;
+  --h-mint-soft: rgba(86, 231, 198, 0.13);
+  --h-cyan: #5ad1f5;
+  --h-cyan-soft: rgba(90, 209, 245, 0.13);
+  --h-lav: #b6a2ff;
+  --h-lav-soft: rgba(182, 162, 255, 0.14);
+
+  /* dark felt board, notes stay as dark "kraft" paper */
+  --board-bg: #101017;
+  --board-bg2: #0b0b12;
+  --board-frame: #23191270;
+  --board-vignette: rgba(0, 0, 0, 0.55);
+  --note-bg: #262437;
+  --note-text: #ecebf7;
+  --note-muted: #a6a8cc;
+  --note-line: rgba(255, 255, 255, 0.05);
+  --tape: rgba(180, 190, 255, 0.16);
+  --note-shadow: 0 14px 26px rgba(0, 0, 0, 0.5);
+
+  --md-primary-fg-color: #8b8bff;
+  --md-primary-fg-color--light: #a5a5ff;
+  --md-primary-fg-color--dark: #6c6cff;
+  --md-primary-bg-color: #e7e8f5;
+  --md-accent-fg-color: #ff9ec4;
+  --md-default-bg-color: #0e0f1c;
+  --md-default-fg-color: #e7e8f5;
+  --md-typeset-a-color: #a5a5ff;
+  --md-code-bg-color: #10121f;
+}
+
+/* ---------- Typography ---------- */
+:root {
+  --md-text-font: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --md-code-font: "JetBrains Mono", ui-monospace, monospace;
+  --h-display: "Zen Maru Gothic", "Inter", sans-serif;
+  --h-hand: "Caveat", "Zen Maru Gothic", cursive;
+}
+
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3,
+.md-typeset h4,
+.md-nav__title,
+.md-header__topic {
+  font-family: var(--h-display);
+  letter-spacing: 0.2px;
+}
+.md-typeset h1 {
+  font-weight: 900;
+}
+
+/* ---------- Header: frosted, not a heavy solid bar ---------- */
+.md-header {
+  background: var(--h-glass);
+  -webkit-backdrop-filter: saturate(160%) blur(14px);
+  backdrop-filter: saturate(160%) blur(14px);
+  border-bottom: 1px solid var(--h-border);
+  color: var(--h-text);
+  box-shadow: none;
+}
+.md-header__title,
+.md-header [class*="icon"],
+.md-header__button {
+  color: var(--h-text);
+}
+.md-tabs {
+  background: transparent;
+  color: var(--h-text);
+}
+.md-tabs__link {
+  opacity: 0.75;
+  font-weight: 600;
+}
+.md-tabs__link--active,
+.md-tabs__link:hover {
+  opacity: 1;
+  color: var(--h-iris);
+}
+.md-search__form {
+  background: var(--h-surface);
+  border: 1px solid var(--h-border);
+  border-radius: 12px;
+  box-shadow: none;
+}
+
+/* ---------- Links & code chips ---------- */
+.md-typeset a {
+  text-decoration-color: color-mix(in srgb, var(--md-typeset-a-color) 40%, transparent);
+  text-underline-offset: 3px;
+}
+.md-typeset code {
+  background: var(--h-iris-soft);
+  color: var(--h-iris);
+  border-radius: 6px;
+  padding: 0.1em 0.4em;
+}
+
+/* ============================================================
+   HOME PAGE — THE EVIDENCE BOARD
+   ============================================================ */
+
+/* ---------- The board ---------- */
+.board {
+  position: relative;
+  max-width: 1120px;
+  margin: 1.75rem auto 4rem;
+  padding: 3.5rem clamp(1.2rem, 4vw, 3.5rem) 4rem;
+  border-radius: 8px;
+  border: 12px solid var(--board-frame);
+  outline: 1px solid rgba(0, 0, 0, 0.25);
+  background-color: var(--board-bg);
+  background-image:
+    radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.10), transparent 60%),
+    linear-gradient(135deg, var(--board-bg) 0%, var(--board-bg2) 100%);
+  box-shadow:
+    inset 0 0 140px var(--board-vignette),
+    0 24px 60px rgba(0, 0, 0, 0.3);
+  isolation: isolate;
+  overflow: hidden;
+}
+
+/* fibrous cork / felt grain */
+.board::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.22;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+/* ---------- Newspaper masthead ---------- */
+.masthead {
+  display: block;
+  position: relative;
+  width: 100%;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 2.4rem;
+  text-decoration: none !important;
+  transition: transform 0.18s ease;
+}
+.masthead:hover {
+  transform: translateY(-3px);
+}
+
+.masthead__img {
+  display: block;
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  object-position: center 20%;
+}
+
+/* text block: bottom-right corner, dark pill */
+.masthead__text {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  max-width: 40%;
+  background: rgba(8, 6, 20, 0.70);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  border-radius: 6px;
+  padding: 0.9rem 1.1rem 0.8rem;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.masthead__kicker {
+  font-family: var(--h-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--h-sakura);
+  display: block;
+  margin-bottom: 0.1rem;
+  letter-spacing: 0.5px;
+}
+.masthead__title {
+  font-family: var(--h-hand) !important;
+  font-weight: 700;
+  font-size: clamp(1.6rem, 3vw, 2.2rem) !important;
+  line-height: 1 !important;
+  margin: 0 0 0.3rem !important;
+  color: #fff;
+}
+.masthead__tagline {
+  color: rgba(255,255,255,0.7);
+  font-size: 0.7rem;
+  line-height: 1.0;
+  font-style: italic;
+  margin: 0 0 0.55rem;
+}
+.masthead__cta {
+  font-family: var(--h-hand);
+  font-size: 1.0rem;
+  color: var(--h-sakura);
+  border-bottom: 2px dashed rgba(255, 111, 165, 0.4);
+  transition: color 0.15s;
+  float: right;
+}
+.masthead:hover .masthead__cta {
+  color: #fff;
+  border-bottom-color: rgba(255,255,255,0.35);
+}
+
+@media screen and (max-width: 44rem) {
+  .masthead__img { height: 180px; }
+  .masthead__text { max-width: 60%; }
+}
+
+/* ---------- Identity note (hibikiji.png) ---------- */
+.note--identity {
+  --pin: var(--h-sakura);
+  grid-column: span 2;
+  padding: 0;
+  min-height: 240px;
+  max-height: 280px;
+  overflow: hidden;
+  background: #0a0a14;
+  background-image: none;
+}
+.note--identity:nth-child(1) {
+  transform: rotate(-1.2deg);
+  margin-top: 0;
+}
+.note--identity:hover {
+  transform: rotate(0deg) translateY(-6px) scale(1.02);
+}
+.note__img {
+  display: block;
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  object-position: center 20%;
+}
+.note__overlay {
+  position: absolute;
+  inset: auto 0 0;
+  padding: 2.2rem 1.5rem 1.3rem;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.92) 0%,
+    rgba(0,0,0,0.72) 40%,
+    rgba(0,0,0,0.2) 70%,
+    transparent 100%
+  );
+  color: #fff;
+}
+.note__kicker {
+  font-family: var(--h-display);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--h-sakura);
+  display: block;
+  margin-bottom: 0.1rem;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+}
+.note__title {
+  font-family: var(--h-hand) !important;
+  font-weight: 700;
+  font-size: clamp(1.9rem, 4vw, 2.6rem) !important;
+  line-height: 1 !important;
+  margin: 0 0 0.3rem !important;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+}
+.note__tagline {
+  color: rgba(255,255,255,0.82);
+  font-size: 0.85rem;
+  line-height: 1.45;
+  margin: 0 0 0.65rem;
+  max-width: 52ch;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.7);
+}
+.note__cta {
+  font-family: var(--h-hand);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--h-sakura);
+  border-bottom: 2px dashed rgba(255, 111, 165, 0.5);
+  display: inline-block;
+  transition: color 0.18s;
+}
+.note--identity:hover .note__cta {
+  color: #fff;
+  border-bottom-color: rgba(255,255,255,0.5);
+}
+
+/* red rubber stamp */
+.stamp {
+  position: absolute;
+  top: 14px;
+  right: -6px;
+  font-family: var(--md-code-font);
+  font-size: 0.72rem;
+  line-height: 1.15;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #c0392b;
+  border: 2px solid #c0392b;
+  border-radius: 6px;
+  padding: 0.3rem 0.5rem;
+  transform: rotate(9deg);
+  opacity: 0.72;
+  mix-blend-mode: multiply;
+}
+.stamp small {
+  font-size: 0.58rem;
+  letter-spacing: 0.5px;
+}
+[data-md-color-scheme="slate"] .stamp {
+  color: #ff7a6b;
+  border-color: #ff7a6b;
+  mix-blend-mode: screen;
+  opacity: 0.85;
+}
+
+/* ---------- Board label ---------- */
+.board__label {
+  font-family: var(--h-hand);
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.45);
+  transform: rotate(-1.5deg);
+  margin: 0 0 1.8rem 0.5rem;
+}
+
+/* ---------- Notes grid ---------- */
+.notes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 2.2rem 1.8rem;
+}
+
+.note {
+  position: relative;
+  display: block;
+  padding: 1.7rem 1.4rem 1.5rem;
+  min-height: 168px;
+  background: var(--note-bg);
+  color: var(--note-text) !important;
+  border-radius: 3px;
+  box-shadow: var(--note-shadow);
+  text-decoration: none !important;
+  background-image: repeating-linear-gradient(
+    var(--note-line) 0 1px,
+    transparent 1px 26px
+  );
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  will-change: transform;
+}
+
+/* scatter the notes at friendly angles */
+.note:nth-child(5n + 1) { transform: rotate(-2.4deg); }
+.note:nth-child(5n + 2) { transform: rotate(1.8deg); margin-top: 1.4rem; }
+.note:nth-child(5n + 3) { transform: rotate(-1deg); }
+.note:nth-child(5n + 4) { transform: rotate(2.6deg); margin-top: 0.9rem; }
+.note:nth-child(5n + 5) { transform: rotate(-1.8deg); }
+
+.note:hover {
+  transform: rotate(0deg) translateY(-6px) scale(1.02);
+  box-shadow: 0 22px 40px rgba(0, 0, 0, 0.4);
+  z-index: 3;
+}
+
+/* push-pin */
+.note::before {
+  content: "";
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  width: 18px;
+  height: 18px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.9), transparent 45%),
+    radial-gradient(circle at 60% 65%, rgba(0, 0, 0, 0.35), transparent 55%),
+    var(--pin, var(--h-iris));
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.45);
+  z-index: 2;
+}
+/* pin's little shadow on the paper */
+.note::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: calc(50% - 1px);
+  width: 2px;
+  height: 10px;
+  background: rgba(0, 0, 0, 0.18);
+  transform: rotate(6deg);
+  transform-origin: top;
+}
+[data-md-color-scheme="slate"] .note::before {
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.6),
+    0 0 10px color-mix(in srgb, var(--pin, var(--h-iris)) 60%, transparent);
+}
+
+.note__no {
+  font-family: var(--md-code-font);
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  color: var(--note-muted);
+  border: 1px solid var(--note-line);
+  padding: 0.05rem 0.35rem;
+  border-radius: 4px;
+}
+.note__name {
+  font-family: var(--h-hand) !important;
+  font-weight: 700;
+  font-size: 1.85rem !important;
+  line-height: 1.05;
+  margin: 0.6rem 0 0.4rem !important;
+  color: var(--pin, var(--h-iris));
+}
+.note__desc {
+  color: var(--note-muted);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  margin: 0;
+}
+.note__more {
+  position: absolute;
+  bottom: 1.1rem;
+  font-family: var(--h-hand);
+  font-size: 1.15rem;
+  color: var(--pin, var(--h-iris));
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: all 0.2s ease;
+}
+.note:hover .note__more {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* per-category pin colors */
+.note--platform { --pin: var(--h-iris); }
+.note--software { --pin: var(--h-cyan); }
+.note--hobby    { --pin: var(--h-sakura); }
+.note--travel   { --pin: var(--h-mint); }
+.note--general  { --pin: var(--h-lav); }
+
+/* ---------- Sticky footer note ---------- */
+.board__foot {
+  width: fit-content;
+  margin: 3rem auto 0;
+  padding: 0.7rem 1.1rem;
+  background: var(--tape);
+  color: var(--note-text);
+  font-family: var(--md-code-font);
+  font-size: 0.72rem;
+  border-radius: 2px;
+  transform: rotate(-1deg);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+@media screen and (max-width: 44rem) {
+  .board { border-width: 8px; }
+  .note { min-height: 150px; }
+  .note:nth-child(n) { margin-top: 0; }
+  .note--identity { grid-column: span 1; }
+  .note__img { max-height: 180px; }
+}
+
+/* ============================================================
+   BLOG polish (unchanged pages)
+   ============================================================ */
+.md-typeset .md-post,
+.md-typeset .md-tag {
+  border-radius: 16px;
+}
+.md-typeset .md-tag {
+  border-radius: 999px;
+}
